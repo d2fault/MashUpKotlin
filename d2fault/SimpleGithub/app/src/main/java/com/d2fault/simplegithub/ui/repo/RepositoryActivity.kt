@@ -1,4 +1,4 @@
-package com.d2fault.simplegithub.repo
+package com.d2fault.simplegithub.ui.repo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

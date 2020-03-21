@@ -1,4 +1,4 @@
-package com.d2fault.simplegithub.search
+package com.d2fault.simplegithub.ui.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
