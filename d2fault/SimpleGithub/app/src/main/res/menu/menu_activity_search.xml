@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_activity_search_query"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/ic_search_white"
         android:title="Search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="always" />
-    <!--단순히 이미지만 추가하는게 아니라 진짜 검색창이 되도록 하는것입니다.-->
+        app:showAsAction="always|collapseActionView" />
 </menu>
