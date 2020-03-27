@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface GithubApi {
     // https://api.github.com/search/repositories?q=tetris&sort=stars&order=desc
-//    @GET("search/repositories")
+    @GET("search/repositories")
     fun searchRepository(@Query("q") query: String): Call<RepoSearchResponse>
 
     // https://api.github.com/repos/chvin/react-tetris
