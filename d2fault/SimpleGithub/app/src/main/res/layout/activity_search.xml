@@ -3,21 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvActivitySearchList"
+    <view class="androidx.recyclerview.widget.RecyclerView"
+        android:id="@+id/rv_activity_search_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical" />
 
     <ProgressBar
-        android:id="@+id/pbActivitySearch"
+        android:id="@+id/pb_activity_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/tvActivitySearchMessage"
+        android:id="@+id/tv_activity_search_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
