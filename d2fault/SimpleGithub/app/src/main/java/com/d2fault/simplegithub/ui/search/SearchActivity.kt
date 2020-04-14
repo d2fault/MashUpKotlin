@@ -6,7 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.d2fault.simplegithub.R
 import com.d2fault.simplegithub.ui.api.GithubApi
@@ -25,10 +25,11 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.ItemClickListener {
     internal lateinit var menuItemSearch: MenuItem
 
     // 2. SearchView 추가
-    internal lateinit var searchView: androidx.appcompat.widget.SearchView
+    internal lateinit var searchView: SearchView
 
     // 3. Adapter에 Listener 추가
     internal val searchAdapter by lazy {
+        // apply는 객체를 생성함과 동시에 초기화한다.
         SearchAdapter().apply { setItemClickListener(this@SearchActivity) }
     }
 
@@ -43,8 +44,8 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.ItemClickListener {
         setContentView(R.layout.activity_search)
 
         with(rv_activity_search_list) {
-            var layoutManager = LinearLayoutManager(this@SearchActivity)
-            var searchAdapter = this@SearchActivity.searchAdapter
+            layoutManager = LinearLayoutManager(this@SearchActivity)
+            adapter = this@SearchActivity.searchAdapter
         }
     }
 
@@ -53,27 +54,26 @@ class SearchActivity : AppCompatActivity(), SearchAdapter.ItemClickListener {
         // 1. click event 처리
         menuItemSearch = menu!!.findItem(R.id.btn_menu_activity_search_query)
         // 2. menuItemSearch.actionView의 type을 SearchView로 캐스팅(as)
-        searchView = (menuItemSearch.actionView as androidx.appcompat.widget.SearchView).apply {
+        searchView = (menuItemSearch.actionView as SearchView).apply {
             // 4. QueryTextListener 추가(클릭과 동시에 API 호출)
-            setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-                androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     // !!는 null이 아니라는 의미
                     updateTitle(query!!)
                     hideSoftKeyboard()
                     collapseSearchView()
                     searchRepository(query)
-                    return true;
+                    return true
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
-                    return false;
+                    return false
                 }
 
             })
         }
         menuItemSearch.expandActionView()
-        return super.onCreateOptionsMenu(menu);
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
